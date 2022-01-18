@@ -1,8 +1,4 @@
-﻿target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-
+﻿
 ### STS ###
 .apt_generated
 .classpath
@@ -13,8 +9,10 @@
 .sts4-cache
 
 ### IntelliJ IDEA ###
+target/
 out/
-.idea
+.idea/
+.mvn/
 *.iws
 *.iml
 *.ipr
@@ -31,6 +29,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-
-
