@@ -1,11 +1,13 @@
 package com.github.gad1k.WebBI.services;
 
+import com.github.gad1k.WebBI.dto.User;
 import com.github.gad1k.WebBI.services.api.IUserService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService implements IUserService {
@@ -18,16 +20,18 @@ public class UserService implements IUserService {
 
     @Override
     public String getUserById(int id) {
-        return null;
+        return users.get(id);
     }
 
     @Override
-    public void addUser(String user) {
-
+    public void addUsers(List<User> users) {
+        this.users.addAll(users.stream().map(User::getName).collect(Collectors.toList()));
     }
 
     @Override
-    public void deleteUser(int id) {
-
+    public void deleteUserById(int[] userIds) {
+        for (int userId : userIds) {
+            users.remove(userId);
+        }
     }
 }
