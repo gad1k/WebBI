@@ -1,7 +1,10 @@
 package com.github.gad1k.WebBI.services;
 
 import com.github.gad1k.WebBI.dto.User;
+import com.github.gad1k.WebBI.entity.DatabaseUser;
+import com.github.gad1k.WebBI.entity.UserRepository;
 import com.github.gad1k.WebBI.services.api.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,10 +15,15 @@ import java.util.stream.Collectors;
 @Service
 public class UserService implements IUserService {
     List<String> users = new ArrayList<String>(Arrays.asList("Andrei", "Ruslan"));
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Override
-    public List<String> getUsers() {
-        return users;
+    public Iterable<DatabaseUser> getUsers() {
+        return userRepository.findAll();
     }
 
     @Override
