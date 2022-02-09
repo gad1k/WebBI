@@ -1,6 +1,5 @@
 package com.github.gad1k.WebBI.controllers;
 
-import com.github.gad1k.WebBI.dto.User;
 import com.github.gad1k.WebBI.entity.DatabaseUser;
 import com.github.gad1k.WebBI.services.api.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
