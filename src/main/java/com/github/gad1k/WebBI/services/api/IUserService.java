@@ -4,12 +4,13 @@ import com.github.gad1k.WebBI.dto.User;
 import com.github.gad1k.WebBI.entity.DatabaseUser;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IUserService {
 
     Iterable<DatabaseUser> getUsers();
-    String getUserById(int id);
-    void addUsers(List<User> users);
-    void deleteUserById(int[] userIds);
+    Optional<DatabaseUser> getUserById(Long id);
+    void addUsers(List<DatabaseUser> users);
+    void deleteUserById(List<Long> userIds);
 
 }

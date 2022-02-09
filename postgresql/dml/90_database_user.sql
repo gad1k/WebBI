@@ -1,5 +1,7 @@
 \c "webbi_db"
 
-insert into webbi.database_user (id, name) values (1, 'Albert');
-insert into webbi.database_user (id, name) values (2, 'Kristinochka');
-insert into webbi.database_user (id, name) values (3, 'Semen');
+set search_path to webbi;
+
+insert into webbi.database_user values (nextval('hibernate_sequence'), 'Albert');
+insert into webbi.database_user values (nextval('hibernate_sequence'), 'Kristinochka');
+insert into webbi.database_user values (nextval('hibernate_sequence'), 'Semen');

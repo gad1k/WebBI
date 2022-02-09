@@ -1,12 +1,16 @@
 package com.github.gad1k.WebBI.controllers;
 
 import com.github.gad1k.WebBI.dto.User;
+import com.github.gad1k.WebBI.entity.DatabaseUser;
 import com.github.gad1k.WebBI.services.api.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -24,22 +28,22 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public String getUserById(@PathVariable int id, Model model) {
-        model.addAttribute("users", userService.getUserById(id));
+    public String getUserById(@PathVariable Long id, Model model) {
+        model.addAttribute("users", userService.getUserById(id)
+                                                             .map(Collections::singleton)
+                                                             .orElseGet(Collections::emptySet));
         return "users";
     }
 
     @PostMapping()
-    public String addUsers(@RequestBody List<User> users, Model model) {
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addUsers(@RequestBody List<DatabaseUser> users) {
         userService.addUsers(users);
-        model.addAttribute("users", "OK");
-        return "users";
     }
 
     @DeleteMapping()
-    public String deleteUsers(@RequestBody int[] userIds, Model model) {
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteUsers(@RequestBody List<Long> userIds) {
         userService.deleteUserById(userIds);
-        model.addAttribute("users", "OK");
-        return "users";
     }
 }
