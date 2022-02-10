@@ -1,0 +1,1 @@
+create schema webbi_sch authorization webbi_tech_user;

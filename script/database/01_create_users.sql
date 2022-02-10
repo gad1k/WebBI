@@ -1,0 +1,1 @@
+create user webbi_tech_user with password 'webbi_pwd';
