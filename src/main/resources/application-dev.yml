@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/webbi_db
+    username: webbi_tech_user
+    password: webbi_pwd
+  jpa:
+    properties:
+      hibernate:
+        default_schema: webbi_sch
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
