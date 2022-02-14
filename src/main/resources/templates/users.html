@@ -1,22 +1,54 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html >
     <head>
         <title>Getting Started: Serving Web Content</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     </head>
     <body>
-        <p th:text="'Hello, ' + ${name} + '!'" />
-        <table>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-            <th:block th:each="user : ${users}">
+        <table class="table">
+            <thead>
                 <tr>
-                    <td th:text="${user.id}"></td>
-                    <td th:text="${user.name}"></td>
+                    <th scope="col">#</th>
+                    <th scope="col">First</th>
+                    <th scope="col">Last</th>
+                    <th scope="col">Active</th>
                 </tr>
-            </th:block>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                </tr>
+                <th:block th:each="user : ${users}">
+                    <tr>
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.firstName}"></td>
+                    </tr>
+                </th:block>
+            </tbody>
+        </table>
+
+        <table class="table">
+
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
         </table>
     </body>
 </html>

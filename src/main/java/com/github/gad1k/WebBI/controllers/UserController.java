@@ -1,6 +1,6 @@
 package com.github.gad1k.WebBI.controllers;
 
-import com.github.gad1k.WebBI.entity.DatabaseUser;
+import com.github.gad1k.WebBI.dto.User;
 import com.github.gad1k.WebBI.services.api.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,9 +18,7 @@ public class UserController {
     IUserService userService;
 
     @GetMapping()
-    public String getUsers(@RequestParam(name = "name", required = false, defaultValue = "World") String name,
-                           Model model) {
-        model.addAttribute("name", name);
+    public String getUsers(Model model) {
         model.addAttribute("users", userService.getUsers());
         return "users";
     }
@@ -35,7 +33,7 @@ public class UserController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public void addUsers(@RequestBody List<DatabaseUser> users) {
+    public void addUsers(@RequestBody List<User> users) {
         userService.addUsers(users);
     }
 
